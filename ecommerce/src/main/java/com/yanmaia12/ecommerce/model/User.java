@@ -4,7 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "users")
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "users")
 @Getter
 @Setter
 public class User {
@@ -15,6 +19,8 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
 
     public User() {
     }
