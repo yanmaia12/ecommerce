@@ -3,8 +3,8 @@ package com.yanmaia12.ecommerce.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-public record CadastroDTO(@Email @NotBlank String email,
-                          @NotBlank String name,
+public record RegisterDTO(@NotBlank String name,
+                          @Email @NotBlank String email,
                           @NotBlank String password,
                           @NotBlank String confirmPassword) {
 }
