@@ -32,7 +32,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDTO userRegister(@Valid RegisterDTO registerDTO){
+    public UserResponseDTO userRegister(RegisterDTO registerDTO){
         if (userRepository.existsByEmail(registerDTO.email())) throw new BusinessException("Email já registrado!");
         if (!registerDTO.password().equals(registerDTO.confirmPassword())) throw new BusinessException("Senhas não coincidem!");
 
@@ -47,7 +47,7 @@ public class UserService {
     }
 
     @Transactional
-    public LoginResponseDTO userLogin(@Valid LoginDTO loginDTO){
+    public LoginResponseDTO userLogin(LoginDTO loginDTO){
         if (!userRepository.existsByEmail(loginDTO.email())) throw new BusinessException("Email não registrado!");
 
         var authToken = new UsernamePasswordAuthenticationToken(loginDTO.email(), loginDTO.password());
